@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class=" bg-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFdSAVjV1RJpYIF2y6hZ1qMwfBkg1HSY0klQ&usqp=CAU');" >
+  <div class="mask d-flex mt-3 align-items-center  gradient-custom-3">
+    <div class="container">
+       
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="col-md-5">
+           
+          <div class="card" style="border-radius: 15px;">
+           
+          {% include 'messages.html'%}
+
+            <div class="card-body">
+              <h3 class="text-capitalize text-center mb-3">My Profile</h3>
+              <hr>
+              {% comment %} <p class="text-center"><a href="{% url "index" %}" class="text-success  text-decoration-none mb-2">back to home</a></p> {% endcomment %}
+
+            <div class="row">
+             <div class="col">
+             <div><strong>Username:</strong> <span class="text-capitalize ">{{user.username}}</span></div>
+             <div class="mt-3 "><strong>First Name:</strong> {{user.firstname}}</div>
+             <div class="mt-3 "><strong>Last  Name: </strong>{{user.lastname}}</div>
+             <div class="mt-3 "><strong>My Interest:</strong> {{user.interest}}</div>
+             <div class="mt-3 "><strong>Contact:</strong> {{user.phone}}</div>
+             <p class="mt-3 "><strong>Email:</strong> {{user.email}}</p>
+            
+             </div>
+
+             <div class="col">
+              <img src="{{user.image.url}}" class="img-fluid" alt="" style="height:220px;">
+             </div>
+
+            </div>
+            </div>
+            <a href="{% url "proupdate" %}"><p class="text-center"><button type="submit" class="btn btn-success rounded-4">Edit</button></p></a>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+{% comment %} <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> {% endcomment %}
+
+<script>
+  setTimeout(function(){
+
+     if($('#msg').length > 0) {
+    $('#msg').remove();
+  }
+  },3000)
+
+ </script>
+{% endblock content %}

@@ -1,0 +1,194 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+ 
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="icon" href="">
+</head>
+<body>
+     
+    <div class="grid-container">
+        <header class="header">
+            <div class="menu-icon" onclick="openSidebar()" >
+                <span class="material-icons-outlined"> menu</span>
+            </div>
+    
+            <div class="header-left">
+                <p class="h4"> Coding Mentor Administration Panel</p>
+            </div>
+            <div class="header-right">
+                
+                <div class="dropdown">
+                
+                  <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Welcome, {{user.username}} <img src="{{user.image.url}}" alt="" style="height: 40px;" class="img pb-2">
+                  </a>
+                  <ul class="dropdown-menu ">
+                   
+                    <li><a class="dropdown-item" href="{% url "index" %}"> <span class="material-icons-outlined"> home</span> home</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url "logout" %}"> <span class="material-icons-outlined text-danger "> logout</span> Logout</a></li>
+                             
+                  </ul>
+                </div>
+            
+               
+            </div>
+        </header>
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <div class="sidebar-brand text-center">
+                    <span class="material-icons-outlined "> data_object</span>C.M
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()"> close</span>
+            </div>
+            <ul class="sidebar-list">
+               
+                    <a href="{% url "admin_page" %}" class="text-decoration-none ">
+                        <li class="sidebar-list-item">
+                        <span class="material-icons-outlined"> dashboard</span> Dashboard
+                    </li>
+                    </a>
+
+               
+                    <a href="{% url "alluser" %}" class="text-decoration-none ">
+                        <li class="sidebar-list-item">
+                        <span class="material-icons-outlined"> people</span> Users
+                    </li>
+                    </a>
+                    <a href="{% url "allcourse" %}" class="text-decoration-none ">
+                        <li class="sidebar-list-item">
+                        <span class="material-icons-outlined"> library_books</span> Courses
+                    </li>
+                    </a>
+                    <a href="" class="text-decoration-none ">
+                        <li class="sidebar-list-item">
+                        <span class="material-icons-outlined"> subscriptions</span> Enrolled Users
+                    </li>
+                    </a>
+                
+                    <a href="{% url "adduser" %}" class="text-decoration-none ">
+                        <li class="sidebar-list-item">
+                        <span class="material-icons-outlined"> person_add</span> Add User
+                    </li>
+                    </a>
+    
+              
+               
+                    <a href="{% url "admin:index" %}" class="text-decoration-none ">
+                        <li class="sidebar-list-item">
+                        <span class="material-icons-outlined"> event_available</span> Events
+                    </li>
+                    </a>
+               
+    
+                <li class="dropdown sidebar-list-item ">
+                    <a class="active dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="material-icons-outlined"> schedule_send</span> Schedules
+                    </a>
+            
+                  </li>
+            </ul>
+    
+            
+        </aside>
+    
+        <main class="main-container">
+            
+            {% block content %}
+            
+
+                        <div class="main-title">
+                            <h2>DASHBOARD</h2>
+                        </div>
+                        <hr>
+                    
+                    <div class="main-cards">
+                        <div class="cards">
+                            
+                            <a href="" class="text-decoration-none ">
+                                <div class="card-inner">
+                                    <h2 class="h4 text-uppercase text-light  ">Users</h2>
+                                    <span class="material-icons-outlined text-light">groups</span>
+                                
+                                </div>
+                                <h4 class="text-light">{{allusers}}</h4>
+                            </a>       
+                        </div>
+
+                        <div class="cards">
+                            <a href="" class="text-decoration-none ">
+                                <div class="card-inner">
+                                    <h2 class="h4 text-uppercase text-light  ">Courses</h2>
+                                    <span class="material-icons-outlined text-light">library_books</span>
+                                
+                                </div>
+                                <h4 class="text-light">{{allcourses}}</h4>
+                            </a>
+                        </div>
+                        
+                        <div class="cards">
+                            <a href="" class="text-decoration-none ">
+                                <div class="card-inner">
+                                    <h2 class="h4 text-uppercase text-light  "> Events</h2>
+                                    <span class="material-icons-outlined text-light">event</span>
+                                
+                                </div>
+                                <h4 class="text-light">{{allevents}}</h4>
+                            </a>
+                        </div>
+                        <div class="cards">
+                            <a href="" class="text-decoration-none ">
+                                <div class="card-inner">
+                                    <h2 class="h4 text-uppercase text-light  ">Mentor</h2>
+                                    <span class="material-icons-outlined text-light"> person</span>
+                                
+                                </div>
+                                <h4 class="text-light">{{allmentors}}</h4>
+                            </a>
+                        </div>
+                        <div class="cards">
+                            <a href="" class="text-decoration-none ">
+                                <div class="card-inner">
+                                    <h2 class="h4 text-uppercase text-light  ">Mentee</h2>
+                                    <span class="material-icons-outlined text-light"> person</span>
+                                
+                                </div>
+                                <h4 class="text-light">0</h4>
+                            </a>
+                        </div>
+
+                    </div>
+
+
+            
+            {% endblock content %}
+        </main>
+       
+        </div>
+            
+           
+           
+    
+
+</body>
+
+<script src="{% static 'js/opensidebar.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</html>

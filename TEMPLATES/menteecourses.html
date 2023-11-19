@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="breadcrumbs p-1 ">
+    <div class="container">
+      <h3>Courses that am being mentored on</h3>
+    </div>
+  </div><!-- End Breadcrumbs -->
+<section class=" bg-image " style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFdSAVjV1RJpYIF2y6hZ1qMwfBkg1HSY0klQ&usqp=CAU'); background-repeat: no-repeat; background-size: cover;" >
+     <!-- ======= Breadcrumbs ======= -->
+ 
+    <div class=" container  ">
+
+       <div class="row">
+              
+        <div class="col">
+            <table class="table table-responsive table-bordered table-info table-hover table-sm    ">
+                <thead>
+                  <tr>
+                    
+                    <th class="col ">Course</th>
+                    <th class="col">Description</th>
+                    <th class="col">Cost</th>
+                    <th class="col">image</th> 
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for course in course %}
+                    <tr class="table-success">
+        
+                        <td><a href="{% url "course_details" course.id %}"><strong>{{course.title}}</strong></a></td>
+                        <td>{{course.description}}</td>
+                        <td>{{course.price}}</td>
+                        <td><a href="{% url "course_details" course.id %}"><img src="{{course.image.url}}" alt="" srcset="" style="height:50px;"></a></td>
+                     
+                    </tr>
+                    {% endfor %}
+                
+                </tbody>
+              </table>
+        </div>
+       </div>
+    
+</div>
+           
+    
+      
+      
+ 
+</section>
+
+{% endblock content %}

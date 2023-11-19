@@ -1,0 +1,84 @@
+{% extends "admin.html" %}
+
+{% block content %}
+<div class="breadcrumbs ">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-8 mt-3 mb-0 ms-0  rounded-2 border-2">
+            <h3 class="text-decoration-underline ">All Users in the System</h3>
+        </div>
+    
+       <div class="col-md-4 mt-2 mb-0 ms-0  rounded-2 border-2">
+        <form class="d-flex" role="search" method="GET" action="">
+          <input class="form-control me-2" name="q" type="search" placeholder="Search User" aria-label="Search">
+          
+       
+          <button type="submit" class="btn btn-primary">
+            Search
+          </button>
+        </form>
+       </div>
+    
+    
+    </div>
+    
+    </div>
+  </div><!-- End Breadcrumbs -->
+ 
+<hr>
+       <div class="row">
+              
+        <div class="col">
+            <table class="table table-responsive table-bordered table- table-hover table-sm    ">
+                <thead>
+                  <tr class="table table-primary ">
+                    
+                    <th class="col ">Username</th>
+                    <th class="col">Names</th>
+                    
+                    <th class="col">Interest</th> 
+                    <th class="col ">Phone Number</th>
+                    <th class="col">Email</th>
+                    <th class="col ">Active</th>
+                    <th class="col">Admin</th>
+                    <th class="col">date Joined</th>
+                    <th class="col">Last Login</th>
+                    <th class="col">Image</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for user in users %}
+                    <tr class="table-success">
+        
+                        <td><a href="{% url "userinfo" user.id %}" class="text-decoration-none "><strong>{{user.username}}</strong></a></td>
+                        <td>{{user.firstname}} {{user.lastname}}</td>
+                        <td> {{user.interest}}</td>
+                        <td> {{user.phone}}</td>
+                        <td> {{user.email}}</td>
+                        {% if user.is_active %}
+                        <td class="text-success">Yes</td>
+                        {% else %}
+                        <td class="text-danger">No</td>
+                        {% endif %}
+                        {% if user.is_admin %}
+                        <td class="text-success">Yes</td>
+                        {% else %}
+                        <td class="text-danger">No</td>
+                        {% endif %}
+                        <td> {{user.date_joined}}</td>
+                        <td> {{user.last_login}}</td>
+                        <td><a href=""><img src="{{user.image.url}}" alt="" srcset="" style="height:50px;"></a></td>
+                    </tr>
+                   
+                    {% endfor %}
+                
+                </tbody>
+              </table>
+        </div>
+       </div>
+      
+
+{% endblock content %}

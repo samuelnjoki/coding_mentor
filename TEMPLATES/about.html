@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>At Coding Cohort, we believe in the transformative power of coding education and the strength of community. Founded with a vision to empower aspiring coders, we've created a dynamic platform that goes beyond traditional learning. Our commitment is to provide a space where passion meets proficiency, where collaboration fuels innovation, and where each learner can forge a path to coding excellence.</p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>Our Mission.</h3>
+            <p class="fst-italic">
+              Empowering individuals with the skills and confidence to thrive in the ever-evolving world of coding. We strive to foster a community where knowledge is shared, connections are formed, and every mentee is equipped to navigate the intricate landscape of programming.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> We believe that collective learning, collaboration, and shared experiences are the cornerstones of success in the coding world..</li>
+              <li><i class="bi bi-check-circle"></i> Experienced Mentors: Our team of mentors brings a wealth of industry experience to guide and inspire mentees..</li>
+              <li><i class="bi bi-check-circle"></i> Diversity and Inclusion: We embrace mentees from all backgrounds, fostering an inclusive environment where everyone has a voice and a unique contribution to make...</li>
+            </ul>
+            <p>
+              Ready to embark on a coding adventure? Join Coding Cohort and become part of a community where your coding dreams take flight. Your journey to coding excellence starts here.
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts section-bg">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{mentee}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Mentees</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{course}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Courses</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{event}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Events</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{mentor}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Mentors</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <p>What are they saying</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Samuel Njoki</h3>
+                  <h4>Ceo &amp; Founder</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Community-First: Coding Cohort is more than education; it's a global community. Collaborate, innovate, and thrive with passionate learners, supported by experienced mentors dedicated to your coding success.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Sara Wilsson</h3>
+                  <h4>Designer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Experienced Mentors: Learn from industry experts at Coding Cohort. Our mentors bring real-world insights to guide your coding journey, ensuring personalized support and valuable perspectives for comprehensive skill development.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Jena Karlis</h3>
+                  <h4>Store Owner</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Real-World Application: Dive into hands-on projects from day one. Coding Cohort's curriculum emphasizes practical skills, bridging theory with application, and preparing you for success in the dynamic coding landscape.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Matt Brandon</h3>
+                  <h4>Freelancer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Diversity and Inclusion: Embrace coding with Coding Cohort – a community that celebrates diversity. Join learners from all backgrounds, contribute your unique voice, and thrive in an inclusive environment that values everyone.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                  <h3>John Larson</h3>
+                  <h4>Entrepreneur</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Coding Adventure Awaits: Join Coding Cohort for an exciting coding journey. Whether a beginner or pro, our community fuels continuous learning, collaboration, and the excitement of coding possibilities. Your excellence begins here.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+
+ 
+{% endblock content %}

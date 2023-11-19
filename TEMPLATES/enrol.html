@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section class=" bg-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFdSAVjV1RJpYIF2y6hZ1qMwfBkg1HSY0klQ&usqp=CAU');" >
+    <div class="mask d-flex mt-3 align-items-center  gradient-custom-3">
+      <div class="container">
+        <div class="row d-flex justify-content-center align-items-center ">
+          <div class="col-md-4">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body">
+                <h4 class="text-capitalize text-center mb-3">Enrol for <span class="text-success">{{course.title}}</span></h4>
+                {% comment %} <p class="text-center"><a href="{% url "index" %}" class="text-success  text-decoration-none mb-2">back to home</a></p> {% endcomment %}
+  
+                <form action="" method="post" novalidate>
+                  {% csrf_token %}
+                  {% comment %} {{form.user}} {% endcomment %}
+                  {% comment %} {{form}} {% endcomment %}
+                  <p>{{form.user|as_crispy_field}}</p>
+                  <p>{{form.course|as_crispy_field}}</p>
+                  <p>{{form.experience|as_crispy_field}}</p>
+                  <p>{{form.interest|as_crispy_field}}</p>
+                  <p class="text-center"><button type="submit" class="btn btn-success bx-border-radius">Enrol</button></p>
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}

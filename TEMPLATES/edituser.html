@@ -1,0 +1,114 @@
+{% extends "admin.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class=" bg-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFdSAVjV1RJpYIF2y6hZ1qMwfBkg1HSY0klQ&usqp=CAU');" >
+  <div class="mask d-flex  align-items-center  gradient-custom-3">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="col-md-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body">
+
+              {% comment %} {% include "messages.html" %} {% endcomment %}
+              <h4 class="text-capitalize text-center ">Update User Profile</h4>
+              <hr>
+              {% comment %} <p class="text-center"><a href="{% url "index" %}" class="text-success  text-decoration-none mb-2">back to home</a></p> {% endcomment %}
+
+            <div class="row">
+           
+              <form  method="post" action="" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <p>{{form.username|as_crispy_field}}</p>
+                  <p>{{form.firstname|as_crispy_field}}</p>
+                  <p>{{form.lastname|as_crispy_field}}</p>
+                  <p>{{form.interest|as_crispy_field}}</p>
+                  <p>{{form.phone|as_crispy_field}}</p>
+                  <p>{{form.email|as_crispy_field}}</p>
+                  <div class="row">
+                    <div class="col">
+                      <p>{{form.is_active|as_crispy_field}}</p>
+                    </div>
+                    <div class="col">
+                      <p>{{form.is_admin|as_crispy_field}}</p>
+                    </div>
+                    </div>
+                  <div class="row">
+                  <div class="col">
+                    <p>{{form.is_staff|as_crispy_field}}</p>
+                  </div>
+                  </div>
+                 
+                </div>
+              
+                <div class="col-md-6 mt-3">
+                 
+                  <img src="{{user.image.url}}" class="img-fluid" alt="" style="height:306px;">
+                  <p>{{form.image|as_crispy_field}}</p>
+                </div>
+              </div>
+                <div class="row">
+                  <div class="col">
+                    <p class="text-center"><button type="submit" class="btn btn-success rounded-4">save</button></p>
+                  </div>
+                  <div class="col">
+                    <a href="{% url "delete" user.id %}" class="btn btn-danger rounded-4">Delete</a>
+                  </div>
+                </div>
+              </form>
+            
+
+             
+             
+             
+
+            </div>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> {% endcomment %}
+{% if messages  %}
+
+{% for message in messages %}
+<script>
+
+  Swal.fire({
+    title: "Do you want to save the changes?",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Save",
+    denyButtonText: `Don't save`
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire("Saved!", "", "success");
+    } else if (result.isDenied) {
+      Swal.fire("Changes are not saved", "", "info");
+    }
+  });
+</script>
+
+{% endfor %}
+
+
+{% endif %}
+<script>
+  setTimeout(function(){
+
+     if($('#msg').length > 0) {
+    $('#msg').remove();
+  }
+  },3000)
+
+ </script>
+{% endblock content %}

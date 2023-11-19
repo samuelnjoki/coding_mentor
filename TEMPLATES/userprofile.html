@@ -1,0 +1,91 @@
+{% extends "admin.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class=" bg-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFdSAVjV1RJpYIF2y6hZ1qMwfBkg1HSY0klQ&usqp=CAU');" >
+  <div class="mask d-flex align-items-center  gradient-custom-3">
+    <div class="container">
+       
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="col-md-6">
+           
+          <div class="card" style="border-radius: 15px;">
+           
+          {% comment %} {% include 'messages.html'%} {% endcomment %}
+
+            <div class="card-body">
+              <h3 class="text-capitalize text-center mb-3">User Profile</h3>
+              <hr>
+              {% comment %} <p class="text-center"><a href="{% url "index" %}" class="text-success  text-decoration-none mb-2">back to home</a></p> {% endcomment %}
+
+            <div class="row">
+             <div class="col">
+             <div><strong>Username:</strong> <span class="text-capitalize ">{{user.username}}</span></div>
+             <div class="mt-3 "><strong>First Name:</strong> {{user.firstname}}</div>
+             <div class="mt-3 "><strong>Last  Name: </strong> {{user.lastname}}</div>
+             <div class="mt-3 "><strong>My Interest:</strong> {{user.interest}}</div>
+             <div class="mt-3 "><strong>Contact:</strong> {{user.phone}}</div>
+             <div class="mt-3 "><strong>Email:</strong> {{user.email}}</div>
+             <div class="mt-3 "><strong>Contact:</strong> {{user.phone}}</div>
+            <div class="row">
+                <div class="col">
+                    {% if user.is_active %}
+                    <div class="mt-3"><strong>Active:</strong><span class="text-success"> Yes</span></div>
+                    {% else %}
+                    <div class="mt-3 "><strong>Active:</strong><span class="text-danger"> No</span></div>
+                    {% endif %}
+                  
+                </div>
+                <div class="col">
+                    {% if user.is_admin %}
+                    <div class="mt-3 "><strong>Admin:</strong><span class="text-success"> Yes</span></div>
+                    {% else %}
+                    <div class="mt-3 "><strong>Admin:</strong><span class="text-danger"> No</span></div>
+                    {% endif %}
+                </div>
+            </div>
+             <div class="mt-3 "><strong>Date joined:</strong> {{user.date_joined|date:"M j, Y"}}, {{user.date_joined|time:"H:i"}}</div>
+             <div class="mt-3 "><strong>Last Login:</strong> {{user.last_login|date:"M j, Y"}}, {{user.last_login|time:"H:i"}}</div>
+            
+             </div>
+
+             <div class="col">
+              <img src="{{user.image.url}}" class="img-fluid" alt="" style="height:220px;">
+             </div>
+
+            </div>
+            </div>
+            <a href="{% url "edituser" user.id %}"><p class="text-center"><button type="submit" class="btn btn-success rounded-4">Edit</button></p></a>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  {% if messages %}
+    {% for message in messages %}
+    <script>
+      Swal.fire({
+        "text":"{{message}}",
+        "icon":"success"
+      });
+    </script>
+    {% endfor %}
+{% endif %}
+
+<script>
+  setTimeout(function(){
+
+     if($('#msg').length > 0) {
+    $('#msg').remove();
+  }
+  },3000)
+
+ </script>
+{% endblock content %}
