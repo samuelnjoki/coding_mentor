@@ -6,12 +6,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>Coding Mentor</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'img/favicon.jpeg' %}" rel="icon">
+  <link type="image/png" sizes="96x96" rel="icon" href="{% static 'img/icons8-code-96.png' %}">
   <link href="{% static 'img/apple-touch-icon.jpeg' %}" rel="apple-touch-icon">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -100,8 +100,9 @@
       {% endif %}
     </div>
   </header><!-- End Header -->
- 
-
+ {% if user.is_authenticated %}
+{% include "floatingbutton.html" %}
+{% endif %}
 {% block content %}
 
 

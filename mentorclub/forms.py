@@ -203,7 +203,6 @@ class CourseEnrolForm(forms.ModelForm):
         self.fields['user'].widget = forms.HiddenInput()
         self.fields['course'].widget = forms.HiddenInput()
 
-# class CourseForm(forms.ModelForm):
-#     class Meta:
-#         model =Mentee
-#         fields = ['course', 'mentor']
+class MpesaPaymentForm(forms.Form):
+    phone_number=forms.CharField(max_length=13,label='Phone Number')
+    amount=forms.DecimalField(max_digits=8,decimal_places=2,label='Amount')

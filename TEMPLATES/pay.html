@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class=" bg-image gradient-custom-3" style="background-image: url('https://media.istockphoto.com/id/1269086548/vector/smart-home-web-development-and-design-of-blueprints-create-a-digital-drawing-on-a-laptop.jpg?s=1024x1024&w=is&k=20&c=SuvhPLolqlGS7CwilIEjdHnCyVfQxbdz51VrhfPkhc0='); background-repeat: no-repeat; background-size: cover;" >
+    <div class=" mask container-fluid h-100  d-flex justify-content-center gradient-custom-3">
+        <div class="card mt-3  " style="width: auto">
+            <div class="card-body">
+              <h4 class="text-uppercase text-center card-title">Buy us Coffee</h4>
+              
+                <h3 class=" "></h3>
+                <form action="{% url "stk" %}" method="post">
+                    {% csrf_token %}
+                    
+                   <div class="col">
+                    <label for="phone" class="form-label ">Phone Number</label>
+                    <input type="number" name="phone" id="phone" value="254" class="form-control " required>
+            
+                    <label for="amount" class="form-label ">Amount</label>
+                    <input type="number" name="amount" id="amount" class="form-control " required>
+            
+                    <button type="submit" class="btn btn-outline-success mt-2 ">Send</button>
+                   </div>
+                </form>
+              </div>
+    
+            </div>
+      
+           
+    </div>
+</section>
+
+{% endblock content %}

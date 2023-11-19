@@ -29,6 +29,9 @@ urlpatterns = [
     path('enrol/',views.enrol,name='enrol'),
     path('enrol/<str:pk>/',views.enrol,name='enrol'),
     path('mentoring/',views.mentoringCourses,name='coursesmentoring'),
-    path('mentored/',views.mentoredCourses,name='mentoredcourses')
+    path('mentored/',views.mentoredCourses,name='mentoredcourses'),
+    path('pay/',views.pay,name="pay"),
+    path('token/',views.token,name="token"),
+    path('stk/',views.stk,name='stk'),
     
 ]

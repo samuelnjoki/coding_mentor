@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> {% endcomment %}
+
+    <style>
+        .fab-container{
+            position:fixed;
+            bottom:50px;
+            right:50px;
+            z-index:999;
+            curser:pointer;
+        }
+        .fab-icon-holder{
+            width:50px;
+            height:50px;
+            border-radius:100%;
+            background:green;
+            box-shandow:0 6px 20px rgba(0,0,0,0.2);
+        }
+        .fab-icon-holder:hover{
+            opacity:0.8;
+        }
+        .fab-icon-holder i{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            height:100%;
+            font-style:25px;
+            color:#ffffff;
+        }
+        custom-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .custom-tooltip::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background-color: green;
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            white-space: nowrap;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.2s linear;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .custom-tooltip:hover::before {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="fab-container">
+        <div class="fab-icon-holder custom-tooltip" data-tooltip="Buy us coffee">
+            <a href="{% url 'pay' %}"><i class="fa-brands fa-java fa-lg"></i></a>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+

@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -17,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
  
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-	<link rel="icon" href="">
+	<link type="image/png" sizes="96x96" rel="icon" href="{% static 'img/icons8-code-96.png' %}">
 </head>
 <body>
      
@@ -52,7 +53,7 @@
         <aside id="sidebar">
             <div class="sidebar-title">
                 <div class="sidebar-brand text-center">
-                    <span class="material-icons-outlined "> data_object</span>C.M
+                    <i class="fa-solid fa-code"></i></span> C.M
                 </div>
                 <span class="material-icons-outlined" onclick="closeSidebar()"> close</span>
             </div>
