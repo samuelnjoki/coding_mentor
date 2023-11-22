@@ -36,6 +36,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     username= models.CharField(max_length=30,unique=True)
     firstname = models.CharField(max_length=30)
     lastname = models.CharField(max_length=30)
+    GENDER=(
+        ('','Your Gender?'),
+        ('male','Male'),
+        ('female','Female'),
+    )
+    gender = models.CharField(max_length=30,choices=GENDER)
     phone=models.CharField(max_length=15)
     INTEREST=(
         ('','Your Interest?'),

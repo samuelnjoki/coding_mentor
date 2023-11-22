@@ -128,14 +128,18 @@ class UserUpdateForm(forms.ModelForm):
     #     )
     class Meta:
         model = User
-        fields = ["firstname","lastname","username","interest","email","phone","image"]
+        fields = ["firstname","lastname","username","gender","interest","email","phone","image"]
         
 
 class UserEditForm(forms.ModelForm):
     
-    interest=forms.CharField(
-        label='',
-    )
+    # interest=forms.CharField(
+    #     label='',
+    # )
+    # gender=forms.CharField(
+    #     label='',
+    #     widget=forms.TextInput(attrs={'placeholder':'Gender, male or female'})
+    # )
     email=forms.EmailField(
         label='',
         widget=forms.TextInput(attrs={'placeholder':'email'})
@@ -176,8 +180,15 @@ class UserEditForm(forms.ModelForm):
     #     )
     class Meta:
         model = User
-        fields = ["firstname","lastname","username","interest","email","phone","image",'is_active','is_admin','is_staff']
-        
+        fields = ["firstname","lastname","username","gender","interest","email","phone","image",'is_active','is_admin','is_staff']
+        labels={
+            'gender':'',
+            'interest':'',
+        }
+        widget={
+            'gender':forms.Select(attrs={'class':'form-control'}),
+            'interest':forms.Select(attrs={'class':'form-control'}),
+        }
 
 
 

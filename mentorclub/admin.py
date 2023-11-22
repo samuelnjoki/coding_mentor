@@ -11,7 +11,7 @@ class CustomUserAdmin(admin.ModelAdmin):
     add_form =RegistrationForm
     model = User
     
-    list_display = ("username","firstname", "lastname","email", "is_admin", "last_login","date_joined",)
+    list_display = ("username","firstname", "lastname","gender","email", "is_admin", "last_login","date_joined",)
     
     readonly_fields=('id','date_joined','last_login',)
    

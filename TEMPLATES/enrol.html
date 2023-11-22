@@ -10,6 +10,9 @@
         <div class="row d-flex justify-content-center align-items-center ">
           <div class="col-md-4">
             <div class="card" style="border-radius: 15px;">
+
+              {% include "messages.html" %}
+
               <div class="card-body">
                 <h4 class="text-capitalize text-center mb-3">Enrol for <span class="text-success">{{course.title}}</span></h4>
                 {% comment %} <p class="text-center"><a href="{% url "index" %}" class="text-success  text-decoration-none mb-2">back to home</a></p> {% endcomment %}
@@ -33,4 +36,28 @@
     </div>
   </section>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  {% if messages %}
+{% for message in messages %}
+<script>
+  Swal.fire({
+    "text":"{{message}}",
+    "icon":"error",
+    confirmButtonColor: "red",  
+  });
+</script>
+{% endfor %}
+{% endif %}
+
+
+  <script>
+    setTimeout(function(){
+  
+       if($('#msg').length > 0) {
+      $('#msg').remove();
+    }
+    },2000)
+  
+   </script>
 {% endblock content %}

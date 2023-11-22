@@ -66,13 +66,22 @@
     </style>
 </head>
 <body>
-    <div class="fab-container">
+    <div class="fab-container"  id="coffee">
         <div class="fab-icon-holder custom-tooltip" data-tooltip="Buy us coffee">
-            <a href="{% url 'pay' %}"><i class="fa-brands fa-java fa-lg"></i></a>
+            <a href="{% url 'pay' %}"><i class="fa-brands fa-java fa-beat"></i></a>
         </div>
     </div>
     
 </body>
+<script>
+    setTimeout(function(){
+  
+       if($('#coffee').length > 0) {
+      $('#coffee').remove();
+    }
+    },10000)
+  
+   </script>
 </html>
 
 

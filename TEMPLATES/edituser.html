@@ -25,22 +25,11 @@
                   <p>{{form.username|as_crispy_field}}</p>
                   <p>{{form.firstname|as_crispy_field}}</p>
                   <p>{{form.lastname|as_crispy_field}}</p>
+                  <p>{{form.gender|as_crispy_field}}</p>
                   <p>{{form.interest|as_crispy_field}}</p>
                   <p>{{form.phone|as_crispy_field}}</p>
                   <p>{{form.email|as_crispy_field}}</p>
-                  <div class="row">
-                    <div class="col">
-                      <p>{{form.is_active|as_crispy_field}}</p>
-                    </div>
-                    <div class="col">
-                      <p>{{form.is_admin|as_crispy_field}}</p>
-                    </div>
-                    </div>
-                  <div class="row">
-                  <div class="col">
-                    <p>{{form.is_staff|as_crispy_field}}</p>
-                  </div>
-                  </div>
+                
                  
                 </div>
               
@@ -50,12 +39,24 @@
                   <p>{{form.image|as_crispy_field}}</p>
                 </div>
               </div>
-                <div class="row">
-                  <div class="col">
-                    <p class="text-center"><button type="submit" class="btn btn-success rounded-4">save</button></p>
+              <div class="row">
+                <div class="col">
+                    <p>{{form.is_active|as_crispy_field}}</p>
                   </div>
                   <div class="col">
-                    <a href="{% url "delete" user.id %}" class="btn btn-danger rounded-4">Delete</a>
+                    <p>{{form.is_staff|as_crispy_field}}</p>
+                  </div>
+                  <div class="col">
+                    <p>{{form.is_admin|as_crispy_field}}</p>
+                </div>
+
+              </div>
+                <div class="row">
+                  <div class="col">
+                    <p class="text-center"><button type="submit" class="btn btn-success rounded-3 tooltip="save"><i class="fa-solid fa-save"></i></button></p>
+                  </div>
+                  <div class="col">
+                    <a href="{% url "delete" user.id %}" class="btn btn-danger rounded-3"><i class="fa-solid fa-trash-can"></i></a>
                   </div>
                 </div>
               </form>

@@ -12,7 +12,7 @@ from mentorclub.models import Course, Event, Member, Schedule, User
 from requests.auth import HTTPBasicAuth
 import json
 import requests
-from mentorclub.credentials import LipanaMpesaPpassword,MpesaAccessToken
+# from mentorclub.credentials import LipanaMpesaPpassword,MpesaAccessToken
 
 # Create your views here.
 
@@ -228,10 +228,11 @@ def enrol(request,pk):
         form=form=CourseEnrolForm(request.user,request.POST)
         if form.is_valid():
             form.save()
-            messages.info(request, f'You have successfully enrolled for {course.title} ')
+            messages.success(request, f'You have successfully enrolled for {course.title} ')
             return redirect('courses')
-    
-        return render(request,'enrol.html',{'form':form,'course':course})
+        else:
+            messages.error(request, f'already enrolled for {course.title}')
+            return render(request,'enrol.html',{'form':form,'course':course})
     else:
         form=form=CourseEnrolForm(request.user,initial={'course':course.id})
         context={
@@ -270,40 +271,55 @@ def delete(request, pk):
 
 
 def token(request):
-    consumer_key = '9NeZpsAA0Z8aChpjFSruArmpkBwAIGnn'
-    consumer_secret = '1sAh2o3vhn629Dpt'
-    api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+    pass
+    # consumer_key = 'UUFquEZIk5XryNGVfMeEL0JefkCZ7DkX'
+    # consumer_secret = 'cH4LDrAgE6AV8Wg7'
+    # api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 
-    r = requests.get(api_URL, auth=HTTPBasicAuth(
-        consumer_key, consumer_secret))
-    mpesa_access_token = json.loads(r.text)
-    validated_mpesa_access_token = mpesa_access_token["access_token"]
+    # r = requests.get(api_URL, auth=HTTPBasicAuth(
+    #     consumer_key, consumer_secret))
+    # mpesa_access_token = json.loads(r.text)
+    # validated_mpesa_access_token = mpesa_access_token["access_token"]
 
-    return render(request, 'token.html', {"token":validated_mpesa_access_token})
+    # return render(request, 'token.html', {"token":validated_mpesa_access_token})
 
 def pay(request):
     return render(request, 'pay.html')
 
 def stk(request):
-    if request.method =="POST":
-        phone = request.POST['phone']
-        amount = request.POST['amount']
-        access_token = MpesaAccessToken.validated_mpesa_access_token
-        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-        headers = {"Authorization": "Bearer %s" % access_token}
-        request = {
-            "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,
-            "Password": LipanaMpesaPpassword.decode_password,
-            "Timestamp": LipanaMpesaPpassword.lipa_time,
-            "TransactionType": "CustomerPayBillOnline",
-            "Amount": amount,
-            "PartyA": phone,
-            "PartyB": LipanaMpesaPpassword.Business_short_code,
-            "PhoneNumber": phone,
-            "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-            "AccountReference": "Apen Softwares",
-            "TransactionDesc": "Web Development Charges"
-        }
-        response = requests.post(api_url, json=request, headers=headers)
-        return HttpResponse("payed")
-    return render(request,'pay.html')
+    pass
+    # if request.method =="POST":
+    #     phone = request.POST['phone']
+    #     amount = request.POST['amount']
+    #     access_token = MpesaAccessToken.validated_mpesa_access_token
+    #     # api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+    #     headers = {"Authorization": "Bearer %s" % access_token}
+    #     request = {
+    #         "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,
+    #         "Password": LipanaMpesaPpassword.decode_password,
+    #         "Timestamp": LipanaMpesaPpassword.lipa_time,
+    #         "TransactionType": "CustomerPayBillOnline",
+    #         "Amount": amount,
+    #         "PartyA": phone,
+    #         "PartyB": LipanaMpesaPpassword.Business_short_code,
+    #         "PhoneNumber": phone,
+    #         "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+    #         "AccountReference": "Apen Softwares",
+    #         "TransactionDesc": "Web Development Charges"
+    #     }
+    #     response = requests.post(api_url, json=request, headers=headers)
+    #     result=response.json()
+    #     if 'errorCode' in result:
+    #         error_message = result.get('errorMessage', 'Unknown error')
+    #         return HttpResponse(f'<h1>Payment initiation failed: {error_message}</h1>')
+
+    # # Check for specific scenarios where the transaction may fail
+    #     if result.get('ResponseCode') == '0':
+    #         if result.get('ResultCode') == '1032':
+    #             return HttpResponse('<h1>Payment initiation successful, but customer did not complete the transaction. Please try again.</h1>')
+    #         elif result.get('ResultCode') == '2001':
+    #             return HttpResponse('<h1>Payment initiation successful, but customer has insufficient funds. Please ensure you have enough money in your account.</h1>')
+    #         else:
+    #             return HttpResponse('<h1>Payment initiation successful!</h1>')
+    #     else:
+    #         return HttpResponse('<h1>Payment initiation failed. Please check your account balance and try again.</h1>')

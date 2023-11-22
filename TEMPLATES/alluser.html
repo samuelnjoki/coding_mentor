@@ -68,8 +68,8 @@
                         {% else %}
                         <td class="text-danger">No</td>
                         {% endif %}
-                        <td> {{user.date_joined}}</td>
-                        <td> {{user.last_login}}</td>
+                        <td> {{user.date_joined|date:"M j, Y"}}, {{user.date_joined|time:"H:i"}}</td>
+                        <td> {{user.last_login|date:"M j, Y"}}, {{user.last_login|time:"H:i"}}</td>
                         <td><a href=""><img src="{{user.image.url}}" alt="" srcset="" style="height:50px;"></a></td>
                     </tr>
                    

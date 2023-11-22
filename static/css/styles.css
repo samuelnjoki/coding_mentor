@@ -31,7 +31,7 @@ header{
 #sidebar{
   grid-area: sidebar;
   height: 100%;
-  background-color: rgb(29, 154, 29);
+  background-color: rgb(94, 207, 128);
   color:rgb(255,255,255);
   overflow-y:auto;
   transition: all 0.5s;
@@ -68,7 +68,7 @@ header{
 
 .sidebar-list > a{
   text-decoration: none;
-  color: rgb(180,184,244);
+  color: rgb(245, 245, 252);
 }
 
 .sidebar-list-item{
@@ -111,7 +111,7 @@ header{
 
 .main-cards{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
   margin: 20px 0;
 }
@@ -121,7 +121,7 @@ header{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 10px;
+  padding: 30px;
   color: rgb(255, 255, 255);
   border-radius: 20px;
   box-shadow: 0 6px 7px -4px rgba(0, 0,0,0.2);
