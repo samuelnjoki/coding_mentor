@@ -6,13 +6,14 @@ from django.contrib import messages
 from mentorclub.forms import AccountAuthenticationForm, CourseEnrolForm, RegistrationForm, UserAddForm, UserEditForm, UserUpdateForm
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate,logout
+from django.db.models import Q
 
 from mentorclub.models import Course, Event, Member, Schedule, User
 
 from requests.auth import HTTPBasicAuth
 import json
 import requests
-# from mentorclub.credentials import LipanaMpesaPpassword,MpesaAccessToken
+from mentorclub.credentials import LipanaMpesaPpassword,MpesaAccessToken
 
 # Create your views here.
 
@@ -21,10 +22,22 @@ def admin_view(request):
 
 def alluser(request):
     users=User.objects.all()
+    if request.method=='GET':
+        lookup=request.GET.get('q')
+        if lookup:
+            users=User.objects.filter(Q(username__contains=lookup) | Q(phone__contains=lookup) | Q(email__contains=lookup))
+            return render(request,'alluser.html',{'users':users})
+
     return render(request,'alluser.html',{'users':users})
 
 def allcourse(request):
     courses=Course.objects.all()
+    if request.method=='GET':
+        lookup=request.GET.get('q')
+        if lookup:
+            courses=Course.objects.filter(Q(title__contains=lookup))
+            return render(request,'allcourses.html',{'courses':courses})
+
     return render(request,'allcourses.html',{'courses':courses})
 
 
@@ -54,6 +67,7 @@ def userInfo(request,pk):
 def index(request):
     mentee=User.objects.filter(interest="mentee").count()
     mentor=User.objects.filter(interest="mentor").count()
+    co=Course.objects.all()
     event=Event.objects.all().count()
     course=Course.objects.all().count()
     context={
@@ -61,6 +75,7 @@ def index(request):
         'mentor':mentor,
         'course':course,
         'event':event,
+        'co':co,
     }
     return render(request,'index.html',context)
 
@@ -88,17 +103,18 @@ def courses(request):
     return render(request,'courses.html',{'course':course})
 
 def mentors(request):
-    mentor=Member.objects.filter(interest="mentor")
+    mentor=User.objects.filter(interest="mentor")
     context={
         'mentor':mentor
     }
     return render(request,'mentors.html',context)
 def courseMentors(request):
-    mentor=User.objects.filter(interest="mentor")
+    mentor=Member.objects.filter(interest="mentor")
     context={
-        'mentor':mentor
+        'coursementor':mentor
     }
     return render(request,'coursementors.html',context)
+   
 def events(request):
     event=Event.objects.all()
     return render(request,'events.html',{'event':event})
@@ -165,7 +181,7 @@ def register(request):
             account=authenticate(username=username,password=raw_pass)
             if account is not None:
                 # login(request, account)
-                return redirect("login")
+                return redirect("index")
             else:
                 return redirect('/')
         else:
@@ -291,7 +307,7 @@ def stk(request):
         phone = request.POST['phone']
         amount = request.POST['amount']
         access_token = MpesaAccessToken.validated_mpesa_access_token
-        # api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
         headers = {"Authorization": "Bearer %s" % access_token}
         request = {
             "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,
@@ -313,12 +329,12 @@ def stk(request):
             return HttpResponse(f'<h1>Payment initiation failed: {error_message}</h1>')
 
     # Check for specific scenarios where the transaction may fail
-        if result.get('ResponseCode') == '0':
-            if result.get('ResultCode') == '1032':
-                return HttpResponse('<h1>Payment initiation successful, but customer did not complete the transaction. Please try again.</h1>')
-            elif result.get('ResultCode') == '2001':
-                return HttpResponse('<h1>Payment initiation successful, but customer has insufficient funds. Please ensure you have enough money in your account.</h1>')
-            else:
-                return HttpResponse('<h1>Payment initiation successful!</h1>')
+        # if result.get('ResponseCode') == '0':
+        if result.get('ResultCode') == '1032':
+            return HttpResponse('<h1>Payment initiation successful, but customer did not complete the transaction. Please try again.</h1>')
+        elif result.get('ResultCode') == '2001':
+            return HttpResponse('<h1>Payment initiation successful, but customer has insufficient funds. Please ensure you have enough money in your account.</h1>')
+        # else:
+        #         return HttpResponse('<h1>Payment initiation successful!</h1>')
         else:
             return HttpResponse('<h1>Payment initiation failed. Please check your account balance and try again.</h1>')

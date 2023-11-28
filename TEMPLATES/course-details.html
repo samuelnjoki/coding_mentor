@@ -20,7 +20,7 @@
         <div class="row">
           <div class="col-lg-8">
             <img src="assets/img/course-details.jpg" class="img-fluid" alt="">
-            <h3>Et enim incidunt fuga tempora</h3>
+            <h3>{{course.title}}</h3>
             <p>
              {{course.description}}
           </div>
@@ -54,7 +54,7 @@
     </section><!-- End Cource Details Section -->
 
     <!-- ======= Cource Details Tabs Section ======= -->
-    <section id="cource-details-tabs" class="cource-details-tabs">
+    {% comment %} <section id="cource-details-tabs" class="cource-details-tabs">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -77,6 +77,8 @@
               </li>
             </ul>
           </div>
+
+
           <div class="col-lg-9 mt-4 mt-lg-0">
             <div class="tab-content">
               <div class="tab-pane active show" id="tab-1">
@@ -144,7 +146,7 @@
         </div>
 
       </div>
-    </section><!-- End Cource Details Tabs Section -->
+    </section><!-- End Cource Details Tabs Section --> {% endcomment %}
 
   </main><!-- End #main -->
 

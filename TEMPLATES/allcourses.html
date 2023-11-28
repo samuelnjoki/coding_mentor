@@ -30,6 +30,7 @@
        <div class="row">
               
         <div class="col">
+          {% if courses %}
             <table class="table table-responsive table-bordered table- table-hover table-sm    ">
                 <thead>
                   <tr class="table table-primary ">
@@ -57,6 +58,11 @@
                     </tr>
                 </tbody>
               </table>
+              {% else %}
+              
+              <p class="text-info h3 text-center">No Record Found</p>
+              
+              {% endif %}
         </div>
        </div>
 

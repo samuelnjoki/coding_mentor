@@ -56,7 +56,8 @@
           <li><a href="{% url "about" %}">About</a></li>
           <li class="dropdown"><a href="{% url "courses" %}"><span>Courses</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{% url "mentors" %}">Mentors</a></li>
+              <li><a href="{% url "courses" %}">Courses</a></li>
+              <li><a href="{% url "course_mentors" %}">Mentors</a></li>
               <li class="dropdown"><a href=""><span>MyCourses</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="{% url "coursesmentoring" %}">Am mentoring</a></li>
@@ -66,7 +67,7 @@
               </li>
             </ul>
           </li>
-          <li><a href="{% url "course_mentors" %}">Mentors</a></li>
+          <li><a href="{% url "mentors" %}">Mentors</a></li>
           <li><a href="{% url "events" %}">Events</a></li>
          
 {% comment %} dropdown {% endcomment %}
@@ -171,7 +172,7 @@
         </div>
         <div class="credits">
         
-          {% comment %} Designed by <a href="">Samuel Njoki</a> {% endcomment %}
+          Designed by <a href=""> Samuel Njoki</a>
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">

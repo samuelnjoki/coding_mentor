@@ -9,7 +9,7 @@
     <div class="breadcrumbs">
       <div class="container">
         <h2>Mentors</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+        <p>List of all mentors that  have registered with coding mentor to take mentees through the various courses. </p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -25,12 +25,12 @@
               <div class="swiper-slide">
               <div class="col-lg-10 col-md-10 d-flex align-items-stretch">
                 <div class="member">
-                  <img src="{{mentor.user.image.url}}" class="img-fluid" alt="" style="height: 250px;">
+                  <img src="{{mentor.image.url}}" class="img-fluid" alt="" style="height: 250px;">
                   <div class="member-content">
-                    <h4>{{mentor.user.firstname}}  {{mentor.user.lastname}}</h4>
+                    <h4>{{mentor.firstname}}  {{mentor.lastname}}</h4>
                     <span>{{mentor.course}}</span>
                     <p>
-                      Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                     {{mentor.bio}}
                     </p>
                     <div class="social">
                       <a href=""><i class="bi bi-twitter"></i></a>

@@ -9,7 +9,7 @@
     <div class="breadcrumbs">
       <div class="container">
         <h2>Courses</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+        <p>List of all courses that mentors have enrolled to take mentees through</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -36,18 +36,8 @@
                       <a href="{% url "enrol" course.id %}" class="get-started-btn border-light ">Enroll</a>
                     </div>
                     <h3><a href="{% url "course_details" course.id %}">{{course.title}}</a></h3>
-                    <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                    <div class="trainer d-flex justify-content-between align-items-center">
-                      <div class="trainer-profile d-flex align-items-center">
-                        <img src="{% static 'img/trainers/trainer-1.jpg' %}"  style="width:500px;" class="img-fluid" alt="">
-                        <span>Antonio</span>
-                      </div>
-                      <div class="trainer-rank d-flex align-items-center">
-                        <i class="bx bx-user"></i>&nbsp;50
-                        &nbsp;&nbsp;
-                        <i class="bx bx-heart"></i>&nbsp;65
-                      </div>
-                    </div>
+                    <p>{{course.description}}</p>
+                   
                   </div>
                 </div>
               </div>

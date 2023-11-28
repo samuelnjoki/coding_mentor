@@ -63,15 +63,35 @@
                    </select>
                 </div> {% endcomment %}
   
+
+                <p class="form-radio col-md-4">Your Gender?</p>
+
+                <div class="form-radio col-md-3">
+                  <input class="form-check-input me-2" type="radio" value="male" id="male" name="gender" />
+                  <label class="form-check-label" for="male">Male</label>
+                </div>
+                
+                <div class="form-radio mb-3 col-md-3">
+                  <input class="form-check-input me-2" type="radio" value="female" id="female" name="gender" />
+                  <label class="form-check-label" for="female" >Female</label>
+                </div>
+
                 <p class="form-radio col-md-4">Your Interest?</p>
+
                   <div class="form-radio col-md-3">
                     <input class="form-check-input me-2" type="radio" value="mentor" id="mentor" name="interest" />
                     <label class="form-check-label" for="mentor">Mentor</label>
                   </div>
+                  
                   <div class="form-radio mb-3 col-md-3">
                     <input class="form-check-input me-2" type="radio" value="mentee" id="mentee" name="interest" />
                     <label class="form-check-label" for="mentee" >Mentee</label>
                   </div>
+
+                  <div class="mb-4 col-md-12">
+                    <textarea name="bio" id="bio" cols="47" rows="2" placeholder="say something about yourself"></textarea>
+                  </div>
+                 
                   <div class="mb-4 col-md-12">
                     <input type="password" id="form3Example1cg" name="password1" placeholder="Password" class="form-control form-control" required />
                     

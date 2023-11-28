@@ -49,6 +49,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('mentee','mentee'),
     )
     interest=models.CharField(max_length=50,choices=INTEREST)
+    bio=models.TextField(max_length=255)
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login=models.DateTimeField(auto_now=True)
     image=models.ImageField(verbose_name='photo',blank=True,null=True,default='default.png')
