@@ -97,9 +97,9 @@ def contact(request):
 
 
 def courses(request):
-    # available_courses = Member.objects.filter(interest="mentor").values('course')
-    # course = Course.objects.filter(id__in=available_courses)
-    course=Course.objects.all()
+    available_courses = Member.objects.filter(interest="mentor").values('course')
+    course = Course.objects.filter(id__in=available_courses)
+    # course=Course.objects.all()
     return render(request,'courses.html',{'course':course})
 
 def mentors(request):
@@ -122,7 +122,7 @@ def events(request):
 @login_required(login_url='login')
 def course_details(request,pk):
     
-    try:
+    # try:
         course=Course.objects.get(id=pk)
         schedule=Schedule.objects.filter(course=course.id).last()
         mentee=Member.objects.filter(course=course.id,interest="mentee").count()
@@ -133,15 +133,15 @@ def course_details(request,pk):
             'schedule':schedule
             }
         return render(request,'course-details.html',context)
-    except:
-        course=Course.objects.get(id=pk)
-        mentee=Member.objects.filter(course=course.id,interest="mentee").count()
+    # except:
+    #     course=Course.objects.get(id=pk)
+    #     mentee=Member.objects.filter(course=course.id,interest="mentee").count()
         
-        context={
-            'course':course,
-            'mentee':mentee,
-            }
-        return render(request,'course-details.html',context)
+    #     context={
+    #         'course':course,
+    #         'mentee':mentee,
+    #         }
+    #     return render(request,'course-details.html',context)
     
 def registerUser(request):
     course=Course.objects.all()
